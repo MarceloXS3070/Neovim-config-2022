@@ -97,7 +97,7 @@ vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_force_echo_notifications = 1
 vim.g.db_ui_win_position = 'right'
-vim.g.db_ui_winwidth = 80
+vim.g.db_ui_winwidth = 30
 
 vim.g.db_ui_table_helpers = {
     mysql = {
@@ -109,57 +109,27 @@ vim.g.db_ui_table_helpers = {
     }
 }
 
-vim.g.db_ui_icons = {
-    expanded = {
-        db = '▾ ',
-        buffers = '▾ ',
-        saved_queries = '▾ ',
-        schemas = '▾ ',
-        schema = '▾ פּ',
-        tables = '▾ 藺',
-        table = '▾ ',
-    },
-    collapsed = {
-        db = '▸ ',
-        buffers = '▸ ',
-        saved_queries = '▸ ',
-        schemas = '▸ ',
-        schema = '▸ פּ',
-        tables = '▸ 藺',
-        table = '▸ ',
-    },
-    saved_query = '',
-    new_query = '璘',
-    tables = '離',
-    buffers = '﬘',
-    add_connection = '',
-    connection_ok = '✓',
-    connection_error = '✕',
-}
-
 -- opening it in a new tab
-vim.keymap.set('n', '<leader><leader>db', ':tab DBUI<cr>', {})
-
--- just close the tab, but context related of the keybinding
-vim.keymap.set('n', '<leader><leader>tq', ':tabclose<cr>')
+vim.keymap.set('n', '<leader><leader>db', ':DBUIToggle<cr>', {})
 
 
 local lualine = require('lualine')
+local colors = require("tokyonight.colors").setup()
 
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = "#1D202F",
-  fg       = "#a9b1d6",
-  yellow   = "#e0af68",
-  cyan     = "#7dcfff",
-  darkblue = "#7aa2f7",
-  green    = "#9ece6a",
-  orange   = "#ff9e64",
-  violet   = "#bb9af7",
-  magenta  = "#bb9af7",
-  blue     = "#73daca",
-  red      = "#f7768e",
+  bg       = colors.bg_dark,
+  fg       = colors.fg_dark,
+  yellow   = colors.yellow,
+  cyan     = colors.cyan,
+  darkblue = colors.blue,
+  green    = colors.green,
+  orange   = colors.orange,
+  violet   = colors.violet,
+  magenta  = colors.magenta,
+  blue     = colors.blue,
+  red      = colors.red,
 }
 
 local conditions = {
@@ -225,7 +195,7 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.darkblue}, -- Sets highlighting of component
+  color = { fg = colors.blue}, -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -272,7 +242,7 @@ ins_left {
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta},
+  color = { fg = colors.orange},
 }
 
 ins_left { 'location' }
@@ -303,14 +273,14 @@ ins_right {
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.violet},
+  color = { fg = colors.green},
 }
 
 ins_right {
   'fileformat',
   fmt = string.upper,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.violet},
+  color = { fg = colors.green},
 }
 
 ins_right {

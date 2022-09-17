@@ -40,14 +40,15 @@ call plug#begin('~/AppData/Local/nvim/config/plugins')
     "Icons for vim plugins
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'bryanmylee/vim-colorscheme-icons'
 
     "Corschemes
     Plug 'joshdick/onedark.vim'
     Plug 'morhetz/gruvbox'
     Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     Plug 'catppuccin/nvim', {'as': 'catppuccin'}
     Plug 'ayu-theme/ayu-vim'
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
     "Complete pairs, brackets and keys
     Plug 'jiangmiao/auto-pairs'
@@ -60,6 +61,10 @@ call plug#begin('~/AppData/Local/nvim/config/plugins')
 
     "Treesitter
     Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'tpope/vim-dadbod'
+    Plug 'kristijanhusak/vim-dadbod-ui'
+
+    "Databases
     Plug 'tpope/vim-dadbod'
     Plug 'kristijanhusak/vim-dadbod-ui'
 
